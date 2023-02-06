@@ -1,0 +1,31 @@
+library(ggplot2) # Package for some nice and cool visualizations
+
+# Creating a numeric vectors 
+ Frequency <- c(0.6,0.3,0.4,0.4,0.2,0.6,0.3,0.4,0.9,0.2)
+ BP <- c(103,87,32,42,59,109,78,205,135,176)
+ First <- c(1,1,1,1,0,0,0,0,NA,1)
+ Second <- c(0,0,1,1,0,1,1,1,1,1)
+ FinalDecision <- c(0,1,0,1,0,1,0,1,1,1)
+
+#Creating an DataFrame from vectors that are previously created and 
+then pass them all in the necessary order to the data.frame() function.
+ df <- data.frame(Frequency, BP, First, Second, FinalDecision)
+
+
+#removes all rows containing NA's
+ df <- df[complete.cases(df),]
+
+#mfrow() parameter allows to split the screen in several panels.Here we split into 2 sides.
+ par(mfrow = c(1, 2))
+
+#Using the boxplot() function, you can see how the distribution of a numerical variable, y, 
+changes depending on the values of a second variable.
+
+ boxplot(BP ~ First, data = df, xlab = "First", ylab = "BP")
+ 
+#Using the hist() we can visualize the distribution of numerical data.
+
+hist(BP, xlab = "BP", main = "Histogram of Blood Pressure")
+
+  mean(FinalDecision)
+[1] 0.6
